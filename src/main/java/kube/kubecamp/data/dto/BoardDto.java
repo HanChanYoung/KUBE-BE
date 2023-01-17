@@ -6,7 +6,8 @@ import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Data
 @ToString
@@ -17,16 +18,16 @@ import java.time.LocalDateTime;
 public class BoardDto {
 
     @NotNull
-    private String boardId;
+    private Long boardId;
 
     @NotNull
     private String providerId;
 
     private int categoryId;
 
-    private LocalDateTime rentStartDate;
+    private LocalDate rentStartDate;
 
-    private LocalDateTime rentEndDate;
+    private LocalDate rentEndDate;
 
     private String boardName;
 
@@ -42,7 +43,7 @@ public class BoardDto {
 
     private String boardAddr;
 
-    private LocalDateTime delDate;
+    private LocalDate delDate;
 
     private String imgSrc;
 

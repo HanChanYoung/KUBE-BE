@@ -3,10 +3,9 @@ package kube.kubecamp.data.entity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,19 +13,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="BOARD_LIST_TB")
+@Table(name="BOARD_LIST")
 public class BoardEntity extends BaseTimeEntity {
 
     @Id
-    String boardId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long boardId;
 
     String providerId;
 
     int categoryId;
 
-    LocalDateTime rentStartDate;
+    LocalDate rentStartDate;
 
-    LocalDateTime rentEndDate;
+    LocalDate rentEndDate;
 
     String boardName;
 
@@ -40,10 +40,11 @@ public class BoardEntity extends BaseTimeEntity {
 
     String boardAddr;
 
-    LocalDateTime delDate;
+    LocalDate delDate;
 
     String imgSrc;
 
     boolean isDeleted;
+
 
 }

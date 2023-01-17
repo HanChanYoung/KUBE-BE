@@ -8,7 +8,7 @@ import kube.kubecamp.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -21,9 +21,9 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardDto saveBoardList(String boardId, String providerId, int categoryId, LocalDateTime rentStartDate,
-                                  LocalDateTime rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
-                                  String delvyStatusCode, String boardAddr, LocalDateTime delDate, String imgSrc, boolean isDeleted){
+    public BoardDto saveBoardList(Long boardId, String providerId, int categoryId, LocalDate rentStartDate,
+                                  LocalDate rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
+                                  String delvyStatusCode, String boardAddr, LocalDate delDate, String imgSrc, boolean isDeleted){
 
         BoardEntity boardEntity = boardDataHandler.saveBoardListEntity(boardId, providerId, categoryId, rentStartDate, rentEndDate, boardName, boardDesc, price,
                 stateStatusCode, delvyStatusCode, boardAddr, delDate, imgSrc, isDeleted);
@@ -38,7 +38,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardDtoGet getBoardList(String boardId){
+    public BoardDtoGet getBoardList(Long boardId){
 
         BoardEntity boardEntity = boardDataHandler.getBoardListEntity(boardId);
 

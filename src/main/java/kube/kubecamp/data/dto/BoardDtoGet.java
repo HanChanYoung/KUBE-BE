@@ -4,7 +4,9 @@ package kube.kubecamp.data.dto;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @ToString
@@ -16,13 +18,13 @@ public class BoardDtoGet {
 
 
     @NotNull
-    private String boardId;
+    private Long boardId;
 
     private int categoryId;
 
-    private LocalDateTime rentStartDate;
+    private LocalDate rentStartDate;
 
-    private LocalDateTime rentEndDate;
+    private LocalDate rentEndDate;
 
     private String boardName;
 
@@ -32,5 +34,7 @@ public class BoardDtoGet {
     private float price;
 
     private String imgSrc;
+
+
 
 }

@@ -6,5 +6,5 @@ public interface BoardDAO {
 
     BoardEntity saveBoardList(BoardEntity boardEntity);
 
-    BoardEntity getBoardList(String boardId);
+    BoardEntity getBoardList(Long boardId);
 }
