@@ -26,12 +26,13 @@ public class BoardController {
         return boardService.getBoardList(boardId);
     }
 
+
     @PostMapping("/posts")
     public BoardDto createBoardList(@Valid @RequestBody BoardDto boardDto){
 
         Long boardId = boardDto.getBoardId();
         String providerId = boardDto.getProviderId();
-        int categoryId = boardDto.getCategoryId();
+        String categoryName = boardDto.getCategoryName();
         LocalDate rentStartDate = boardDto.getRentStartDate();
         LocalDate rentEndDate = boardDto.getRentEndDate();
         String boardName = boardDto.getBoardName();
@@ -44,7 +45,7 @@ public class BoardController {
         String imgSrc = boardDto.getImgSrc();
         boolean isDeleted = boardDto.isDeleted();
 
-        return boardService.saveBoardList(boardId, providerId, categoryId, rentStartDate, rentEndDate, boardName, boardDesc, price,
+        return boardService.saveBoardList(boardId, providerId, categoryName, rentStartDate, rentEndDate, boardName, boardDesc, price,
                 stateStatusCode, delvyStatusCode, boardAddr, delDate, imgSrc, isDeleted);
     }
 

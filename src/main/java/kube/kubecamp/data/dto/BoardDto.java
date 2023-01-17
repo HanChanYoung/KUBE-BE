@@ -23,7 +23,7 @@ public class BoardDto {
     @NotNull
     private String providerId;
 
-    private int categoryId;
+    private String categoryName;
 
     private LocalDate rentStartDate;
 
@@ -77,7 +77,7 @@ public class BoardDto {
         return BoardEntity.builder()
                 .boardId(boardId)
                 .providerId(providerId)
-                .categoryId(categoryId)
+                .categoryName(categoryName)
                 .rentStartDate(rentStartDate)
                 .boardName(boardName)
                 .boardDesc(boardDesc)

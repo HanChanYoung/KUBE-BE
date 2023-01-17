@@ -24,7 +24,7 @@ public class UserController {
         return userService.getUser(userId);
     }
 
-    @PostMapping("user")
+    @PostMapping("/user")
     public UserInfoDto createUser(@Valid @RequestBody UserInfoDto userInfoDto){
 
         String userId = userInfoDto.getUserId();

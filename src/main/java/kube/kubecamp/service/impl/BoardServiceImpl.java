@@ -21,14 +21,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardDto saveBoardList(Long boardId, String providerId, int categoryId, LocalDate rentStartDate,
+    public BoardDto saveBoardList(Long boardId, String providerId, String categoryName, LocalDate rentStartDate,
                                   LocalDate rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
                                   String delvyStatusCode, String boardAddr, LocalDate delDate, String imgSrc, boolean isDeleted){
 
-        BoardEntity boardEntity = boardDataHandler.saveBoardListEntity(boardId, providerId, categoryId, rentStartDate, rentEndDate, boardName, boardDesc, price,
+        BoardEntity boardEntity = boardDataHandler.saveBoardListEntity(boardId, providerId, categoryName, rentStartDate, rentEndDate, boardName, boardDesc, price,
                 stateStatusCode, delvyStatusCode, boardAddr, delDate, imgSrc, isDeleted);
 
-        BoardDto boardDto = new BoardDto(boardEntity.getBoardId(),boardEntity.getProviderId(),boardEntity.getCategoryId(),boardEntity.getRentStartDate(),
+        BoardDto boardDto = new BoardDto(boardEntity.getBoardId(),boardEntity.getProviderId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                                             boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                                             boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),boardEntity.getDelDate(),
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
@@ -42,7 +42,7 @@ public class BoardServiceImpl implements BoardService {
 
         BoardEntity boardEntity = boardDataHandler.getBoardListEntity(boardId);
 
-        BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryId(),boardEntity.getRentStartDate(),
+        BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                 boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                 boardEntity.getImgSrc());
 

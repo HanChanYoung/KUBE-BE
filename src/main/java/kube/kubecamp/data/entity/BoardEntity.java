@@ -22,7 +22,7 @@ public class BoardEntity extends BaseTimeEntity {
 
     String providerId;
 
-    int categoryId;
+    String categoryName;
 
     LocalDate rentStartDate;
 
