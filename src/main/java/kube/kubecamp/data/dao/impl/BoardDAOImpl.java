@@ -13,7 +13,7 @@ public class BoardDAOImpl implements BoardDAO {
 
     @Autowired
     public BoardDAOImpl(BoardRepository boardRepository){
-        this.boardRepository =boardRepository;
+        this.boardRepository = boardRepository;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class BoardDAOImpl implements BoardDAO {
         return boardEntity;
     }
     @Override
-    public BoardEntity getBoardList(String boardId){
+    public BoardEntity getBoardList(Long boardId){
         BoardEntity boardEntity = boardRepository.getById(boardId);
         return boardEntity;
     }

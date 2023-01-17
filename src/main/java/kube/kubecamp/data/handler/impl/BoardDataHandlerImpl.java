@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Service
 @Transactional
@@ -22,9 +23,9 @@ public class BoardDataHandlerImpl implements BoardDataHandler {
     }
 
     @Override
-    public BoardEntity saveBoardListEntity(String boardId, String providerId, int categoryId, LocalDateTime rentStartDate,
-                                           LocalDateTime rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
-                                           String delvyStatusCode, String boardAddr, LocalDateTime delDate, String imgSrc, boolean isDeleted){
+    public BoardEntity saveBoardListEntity(Long boardId, String providerId, int categoryId, LocalDate rentStartDate,
+                                           LocalDate rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
+                                           String delvyStatusCode, String boardAddr, LocalDate delDate, String imgSrc, boolean isDeleted){
 
         BoardEntity boardEntity = new BoardEntity(boardId, providerId, categoryId, rentStartDate, rentEndDate, boardName, boardDesc, price,
                                                     stateStatusCode, delvyStatusCode, boardAddr, delDate, imgSrc, isDeleted);
@@ -34,7 +35,7 @@ public class BoardDataHandlerImpl implements BoardDataHandler {
     }
 
     @Override
-    public BoardEntity getBoardListEntity(String boardId){
+    public BoardEntity getBoardListEntity(Long boardId){
 
         return boardDAO.getBoardList(boardId);
     }

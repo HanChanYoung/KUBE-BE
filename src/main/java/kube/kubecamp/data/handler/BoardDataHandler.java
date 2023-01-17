@@ -2,13 +2,13 @@ package kube.kubecamp.data.handler;
 
 import kube.kubecamp.data.entity.BoardEntity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public interface BoardDataHandler {
 
-    BoardEntity saveBoardListEntity(String boardId, String providerId, int categoryId, LocalDateTime rentStartDate,
-                                    LocalDateTime rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
-                                    String delvyStatusCode, String boardAddr, LocalDateTime delDate, String imgSrc, boolean isDeleted);
+    BoardEntity saveBoardListEntity(Long boardId, String providerId, int categoryId, LocalDate rentStartDate,
+                                    LocalDate rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
+                                    String delvyStatusCode, String boardAddr, LocalDate delDate, String imgSrc, boolean isDeleted);
 
-    BoardEntity getBoardListEntity(String boardId);
+    BoardEntity getBoardListEntity(Long boardId);
 }

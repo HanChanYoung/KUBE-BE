@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="USER_TB")
+@Table(name="USER")
 public class UserEntity extends BaseTimeEntity {
 
     @Id
