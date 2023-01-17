@@ -2,6 +2,7 @@ package kube.kubecamp.controller;
 
 
 import kube.kubecamp.data.dto.BoardDto;
+import kube.kubecamp.data.dto.BoardDtoGet;
 import kube.kubecamp.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,10 @@ public class BoardController {
     public BoardController(BoardService boardService){
         this.boardService=boardService;}
 
+    @GetMapping("/posts/{boardId}")
+    public BoardDtoGet getBoardList(@PathVariable String boardId){
+        return boardService.getBoardList(boardId);
+    }
 
     @PostMapping("/posts")
     public BoardDto createBoardList(@Valid @RequestBody BoardDto boardDto){

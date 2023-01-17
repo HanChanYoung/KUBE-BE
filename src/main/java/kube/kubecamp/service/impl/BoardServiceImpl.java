@@ -1,6 +1,7 @@
 package kube.kubecamp.service.impl;
 
 import kube.kubecamp.data.dto.BoardDto;
+import kube.kubecamp.data.dto.BoardDtoGet;
 import kube.kubecamp.data.entity.BoardEntity;
 import kube.kubecamp.data.handler.BoardDataHandler;
 import kube.kubecamp.service.BoardService;
@@ -32,21 +33,20 @@ public class BoardServiceImpl implements BoardService {
                                             boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),boardEntity.getDelDate(),
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
 
-        return  boardDto;
+        return boardDto;
 
     }
 
     @Override
-    public BoardDto getBoardList(String boardId){
+    public BoardDtoGet getBoardList(String boardId){
 
         BoardEntity boardEntity = boardDataHandler.getBoardListEntity(boardId);
 
-        BoardDto boardDto = new BoardDto(boardEntity.getBoardId(),boardEntity.getProviderId(),boardEntity.getCategoryId(),boardEntity.getRentStartDate(),
+        BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryId(),boardEntity.getRentStartDate(),
                 boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
-                boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),boardEntity.getDelDate(),
-                boardEntity.getImgSrc(),boardEntity.isDeleted());
+                boardEntity.getImgSrc());
 
-        return boardDto;
+        return boardDtoGet;
     }
 
 
