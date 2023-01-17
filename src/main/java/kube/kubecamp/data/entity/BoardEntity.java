@@ -22,7 +22,7 @@ public class BoardEntity extends BaseTimeEntity {
 
     String providerId;
 
-    int categoryId;
+    String categoryName;
 
     LocalDate rentStartDate;
 
@@ -39,8 +39,6 @@ public class BoardEntity extends BaseTimeEntity {
     String delvyStatusCode;
 
     String boardAddr;
-
-    LocalDate delDate;
 
     String imgSrc;
 

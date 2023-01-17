@@ -23,7 +23,7 @@ public class BoardDto {
     @NotNull
     private String providerId;
 
-    private int categoryId;
+    private String categoryName;
 
     private LocalDate rentStartDate;
 
@@ -42,8 +42,6 @@ public class BoardDto {
     private String delvyStatusCode;
 
     private String boardAddr;
-
-    private LocalDate delDate;
 
     private String imgSrc;
 
@@ -77,7 +75,7 @@ public class BoardDto {
         return BoardEntity.builder()
                 .boardId(boardId)
                 .providerId(providerId)
-                .categoryId(categoryId)
+                .categoryName(categoryName)
                 .rentStartDate(rentStartDate)
                 .boardName(boardName)
                 .boardDesc(boardDesc)
@@ -85,7 +83,6 @@ public class BoardDto {
                 .stateStatusCode(stateStatusCode)
                 .delvyStatusCode(delvyStatusCode)
                 .boardAddr(boardAddr)
-                .delDate(delDate)
                 .isDeleted(isDeleted)
                 .build();
     }

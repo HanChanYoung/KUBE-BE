@@ -20,7 +20,7 @@ public class BoardDtoGet {
     @NotNull
     private Long boardId;
 
-    private int categoryId;
+    private String categoryName;
 
     private LocalDate rentStartDate;
 
@@ -34,7 +34,6 @@ public class BoardDtoGet {
     private float price;
 
     private String imgSrc;
-
 
 
 }
