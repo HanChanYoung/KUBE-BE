@@ -25,10 +25,10 @@ public class BoardDataHandlerImpl implements BoardDataHandler {
     @Override
     public BoardEntity saveBoardListEntity(Long boardId, String providerId, String categoryName, LocalDate rentStartDate,
                                            LocalDate rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
-                                           String delvyStatusCode, String boardAddr, LocalDate delDate, String imgSrc, boolean isDeleted){
+                                           String delvyStatusCode, String boardAddr, String imgSrc, boolean isDeleted){
 
         BoardEntity boardEntity = new BoardEntity(boardId, providerId, categoryName, rentStartDate, rentEndDate, boardName, boardDesc, price,
-                                                    stateStatusCode, delvyStatusCode, boardAddr, delDate, imgSrc, isDeleted);
+                                                    stateStatusCode, delvyStatusCode, boardAddr, imgSrc, isDeleted);
 
         return boardDAO.saveBoardList(boardEntity);
 

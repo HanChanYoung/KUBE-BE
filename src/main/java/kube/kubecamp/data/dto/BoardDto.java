@@ -43,8 +43,6 @@ public class BoardDto {
 
     private String boardAddr;
 
-    private LocalDate delDate;
-
     private String imgSrc;
 
     @ColumnDefault("false")
@@ -85,7 +83,6 @@ public class BoardDto {
                 .stateStatusCode(stateStatusCode)
                 .delvyStatusCode(delvyStatusCode)
                 .boardAddr(boardAddr)
-                .delDate(delDate)
                 .isDeleted(isDeleted)
                 .build();
     }

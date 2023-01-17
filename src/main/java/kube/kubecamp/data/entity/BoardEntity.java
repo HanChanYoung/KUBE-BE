@@ -40,8 +40,6 @@ public class BoardEntity extends BaseTimeEntity {
 
     String boardAddr;
 
-    LocalDate delDate;
-
     String imgSrc;
 
     boolean isDeleted;

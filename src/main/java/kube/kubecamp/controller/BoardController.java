@@ -41,12 +41,11 @@ public class BoardController {
         String stateStatusCode = boardDto.getStateStatusCode();
         String delvyStatusCode = boardDto.getDelvyStatusCode();
         String boardAddr = boardDto.getBoardAddr();
-        LocalDate delDate = boardDto.getDelDate();
         String imgSrc = boardDto.getImgSrc();
         boolean isDeleted = boardDto.isDeleted();
 
         return boardService.saveBoardList(boardId, providerId, categoryName, rentStartDate, rentEndDate, boardName, boardDesc, price,
-                stateStatusCode, delvyStatusCode, boardAddr, delDate, imgSrc, isDeleted);
+                stateStatusCode, delvyStatusCode, boardAddr, imgSrc, isDeleted);
     }
 
 

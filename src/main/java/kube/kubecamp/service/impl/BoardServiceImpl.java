@@ -23,14 +23,14 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public BoardDto saveBoardList(Long boardId, String providerId, String categoryName, LocalDate rentStartDate,
                                   LocalDate rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
-                                  String delvyStatusCode, String boardAddr, LocalDate delDate, String imgSrc, boolean isDeleted){
+                                  String delvyStatusCode, String boardAddr, String imgSrc, boolean isDeleted){
 
         BoardEntity boardEntity = boardDataHandler.saveBoardListEntity(boardId, providerId, categoryName, rentStartDate, rentEndDate, boardName, boardDesc, price,
-                stateStatusCode, delvyStatusCode, boardAddr, delDate, imgSrc, isDeleted);
+                stateStatusCode, delvyStatusCode, boardAddr,  imgSrc, isDeleted);
 
         BoardDto boardDto = new BoardDto(boardEntity.getBoardId(),boardEntity.getProviderId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                                             boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
-                                            boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),boardEntity.getDelDate(),
+                                            boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
 
         return boardDto;
