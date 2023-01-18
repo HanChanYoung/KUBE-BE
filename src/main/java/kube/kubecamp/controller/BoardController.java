@@ -1,14 +1,17 @@
 package kube.kubecamp.controller;
 
 
+import kube.kubecamp.data.dao.impl.BoardDAOImpl;
 import kube.kubecamp.data.dto.BoardDto;
 import kube.kubecamp.data.dto.BoardDtoGet;
+import kube.kubecamp.data.dto.BoardDtoGetAll;
 import kube.kubecamp.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @RestController
@@ -17,15 +20,20 @@ public class BoardController {
 
     private BoardService boardService;
 
+
     @Autowired
     public BoardController(BoardService boardService){
-        this.boardService=boardService;}
-
+        this.boardService=boardService;
+    }
     @GetMapping("/posts/{boardId}")
     public BoardDtoGet getBoardList(@PathVariable Long boardId){
         return boardService.getBoardList(boardId);
     }
 
+    @GetMapping("/posts")
+    public List<BoardDtoGetAll> getBoardListAll(){
+        return boardService.getBoardListAll();
+    }
 
     @PostMapping("/posts")
     public BoardDto createBoardList(@Valid @RequestBody BoardDto boardDto){

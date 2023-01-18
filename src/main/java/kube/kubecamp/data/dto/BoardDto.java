@@ -4,7 +4,9 @@ package kube.kubecamp.data.dto;
 import kube.kubecamp.data.entity.BoardEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -18,31 +20,41 @@ import java.time.LocalDate;
 public class BoardDto {
 
     @NotNull
+    @Column
     private Long boardId;
 
     @NotNull
+    @Column
     private String providerId;
 
+    @Column
     private String categoryName;
 
+    @Column
     private LocalDate rentStartDate;
 
+    @Column
     private LocalDate rentEndDate;
 
+    @Column
     private String boardName;
 
+    @Column
     private String boardDesc;
 
     @NotNull
+    @Column
     private float price;
 
-    @ColumnDefault("11")
+    @ColumnDefault("defal")
     private String stateStatusCode;
 
+    @Column
     private String delvyStatusCode;
-
+    @Column
     private String boardAddr;
 
+    @Column
     private String imgSrc;
 
     @ColumnDefault("false")

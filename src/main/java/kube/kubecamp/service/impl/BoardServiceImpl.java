@@ -2,6 +2,7 @@ package kube.kubecamp.service.impl;
 
 import kube.kubecamp.data.dto.BoardDto;
 import kube.kubecamp.data.dto.BoardDtoGet;
+import kube.kubecamp.data.dto.BoardDtoGetAll;
 import kube.kubecamp.data.entity.BoardEntity;
 import kube.kubecamp.data.handler.BoardDataHandler;
 import kube.kubecamp.service.BoardService;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -49,6 +52,30 @@ public class BoardServiceImpl implements BoardService {
         return boardDtoGet;
     }
 
+    @Override
+    public List<BoardDtoGetAll> getBoardListAll(){
+
+        List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
+        List<BoardDtoGetAll> boardDtoList = new ArrayList<>();
+
+        for(BoardEntity boardEntity:boardEntityList){
+            BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
+                    .boardId(boardEntity.getBoardId())
+                    .boardName(boardEntity.getBoardName())
+                    .boardDesc(boardEntity.getBoardDesc())
+                    .categoryName(boardEntity.getCategoryName())
+                    .price(boardEntity.getPrice())
+                    .imgSrc(boardEntity.getImgSrc())
+                    .rentStartDate(boardEntity.getRentStartDate())
+                    .rentEndDate(boardEntity.getRentEndDate())
+                    .build();
+
+            boardDtoList.add(boardDtoGetAll);
+        }
+        return boardDtoList;
+
+
+    }
 
 
 }
