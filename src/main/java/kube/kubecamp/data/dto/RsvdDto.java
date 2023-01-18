@@ -56,6 +56,28 @@ public class RsvdDto {
 
     }
 
+    public String getRsvdStatusCode() {
+        return rsvdStatusCode;
+    }
+
+    public void setRsvdStatusCode(String rsvdStatusCode) {
+
+        if (rsvdStatusCode.equals("예약중")){
+            this.rsvdStatusCode="31";
+        }
+        else if(rsvdStatusCode.equals("사용중")){
+            this.rsvdStatusCode="32";
+        }
+        else if(rsvdStatusCode.equals("예약취소")){
+            this.rsvdStatusCode="33";
+        }
+        else{
+            this.rsvdStatusCode="34";
+        }
+
+
+    }
+
     public RsvdEntity toEntityRsvd() {
 
         return RsvdEntity.builder()
