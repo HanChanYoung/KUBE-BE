@@ -2,8 +2,10 @@ package kube.kubecamp.service;
 
 import kube.kubecamp.data.dto.BoardDto;
 import kube.kubecamp.data.dto.BoardDtoGet;
+import kube.kubecamp.data.dto.BoardDtoGetAll;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface BoardService {
 
@@ -13,4 +15,7 @@ public interface BoardService {
                             String delvyStatusCode, String boardAddr,  String imgSrc, boolean isDeleted);
 
     BoardDtoGet getBoardList(Long boardId);
+
+
+    List<BoardDtoGetAll> getBoardListAll();
 }

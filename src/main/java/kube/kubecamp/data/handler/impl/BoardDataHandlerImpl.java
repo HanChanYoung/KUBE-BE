@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Service
@@ -38,6 +39,12 @@ public class BoardDataHandlerImpl implements BoardDataHandler {
     public BoardEntity getBoardListEntity(Long boardId){
 
         return boardDAO.getBoardList(boardId);
+    }
+
+    @Override
+    public List<BoardEntity> getBoardListAllEntity(){
+
+        return boardDAO.getBoardListAll();
     }
 
 }

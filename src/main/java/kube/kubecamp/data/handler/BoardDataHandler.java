@@ -3,6 +3,7 @@ package kube.kubecamp.data.handler;
 import kube.kubecamp.data.entity.BoardEntity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface BoardDataHandler {
 
@@ -11,4 +12,6 @@ public interface BoardDataHandler {
                                     String delvyStatusCode, String boardAddr, String imgSrc, boolean isDeleted);
 
     BoardEntity getBoardListEntity(Long boardId);
+
+    List<BoardEntity> getBoardListAllEntity();
 }

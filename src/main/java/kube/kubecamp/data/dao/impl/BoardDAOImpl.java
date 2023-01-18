@@ -6,6 +6,9 @@ import kube.kubecamp.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class BoardDAOImpl implements BoardDAO {
 
@@ -25,6 +28,13 @@ public class BoardDAOImpl implements BoardDAO {
     public BoardEntity getBoardList(Long boardId){
         BoardEntity boardEntity = boardRepository.getById(boardId);
         return boardEntity;
+    }
+
+    @Override
+    public List<BoardEntity> getBoardListAll(){
+        List<BoardEntity> boardEntityList = boardRepository.findAll();
+
+        return boardEntityList;
     }
 
 }
