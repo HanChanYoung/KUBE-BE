@@ -4,7 +4,10 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+
+### 암호화 파일 ignore
 /src/main/java/kube/kubecamp/config/JasyptConfig.java
+
 ### STS ###
 .apt_generated
 .classpath
