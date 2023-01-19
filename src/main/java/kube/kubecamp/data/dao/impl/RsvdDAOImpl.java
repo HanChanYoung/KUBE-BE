@@ -7,6 +7,8 @@ import kube.kubecamp.repository.RsvdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RsvdDAOImpl implements RsvdDAO {
 
@@ -24,9 +26,16 @@ public class RsvdDAOImpl implements RsvdDAO {
     }
 
     @Override
-    public RsvdEntity getRsvdList(Long rsvdId) {
-        RsvdEntity rsvdEntity = rsvdRepository.getById(rsvdId);
+    public RsvdEntity getRsvdList(Long boardId) {
+        RsvdEntity rsvdEntity = rsvdRepository.getById(boardId);
         return rsvdEntity;
     }
+
+    @Override
+    public List<RsvdEntity> getRsvdListAll(){
+        List<RsvdEntity> rsvdEntityList = rsvdRepository.findAll();
+        return rsvdEntityList;
+    }
+
 
 }

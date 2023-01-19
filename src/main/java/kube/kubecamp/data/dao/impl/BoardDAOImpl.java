@@ -14,6 +14,7 @@ public class BoardDAOImpl implements BoardDAO {
 
     BoardRepository boardRepository;
 
+
     @Autowired
     public BoardDAOImpl(BoardRepository boardRepository){
         this.boardRepository = boardRepository;

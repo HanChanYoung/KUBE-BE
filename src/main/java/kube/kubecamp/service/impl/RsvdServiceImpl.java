@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class RsvdServiceImpl implements RsvdService {
@@ -38,9 +40,9 @@ public class RsvdServiceImpl implements RsvdService {
     }
 
     @Override
-    public RsvdDto getRsvdList(Long rsvdId) {
+    public RsvdDto getRsvdList(Long boardId) {
 
-        RsvdEntity rsvdEntity = rsvdDataHandler.getRsvdListEntity(rsvdId);
+        RsvdEntity rsvdEntity = rsvdDataHandler.getRsvdListEntity(boardId);
 
         RsvdDto rsvdDto = new RsvdDto(rsvdEntity.getRsvdId(), rsvdEntity.getBoardId(), rsvdEntity.getLenderId(),
                 rsvdEntity.getRentStartDate(), rsvdEntity.getRentEndDate(), rsvdEntity.getDelvyOptionCode(),
@@ -48,6 +50,8 @@ public class RsvdServiceImpl implements RsvdService {
 
         return rsvdDto;
     }
+
+
 
 
 }
