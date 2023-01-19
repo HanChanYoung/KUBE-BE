@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Transactional
@@ -36,9 +37,13 @@ public class RsvdDataHandlerImpl implements RsvdDataHandler {
     }
 
     @Override
-    public RsvdEntity getRsvdListEntity(Long rsvdId) {
+    public RsvdEntity getRsvdListEntity(Long boardId) {
 
-        return rsvdDAO.getRsvdList(rsvdId);
+        return rsvdDAO.getRsvdList(boardId);
     }
 
+    @Override
+    public List<RsvdEntity> getRsvdListAllEntity(){
+        return rsvdDAO.getRsvdListAll();
+    }
 }

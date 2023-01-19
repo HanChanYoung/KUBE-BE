@@ -3,8 +3,10 @@ package kube.kubecamp.data.dto;
 
 import lombok.*;
 
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,6 +36,9 @@ public class BoardDtoGet {
     private float price;
 
     private String imgSrc;
+
+    private List<List<LocalDate>> reservedDate;
+
 
 
 }

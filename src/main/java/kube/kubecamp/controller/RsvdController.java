@@ -1,5 +1,6 @@
 package kube.kubecamp.controller;
 
+import kube.kubecamp.data.dto.BoardDtoGet;
 import kube.kubecamp.data.dto.RsvdDto;
 import kube.kubecamp.service.RsvdService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class RsvdController {
 
         return rsvdService.saveRsvdList(rsvdId, boardId, lenderId, rentStartDate, rentEndDate,
                 delvyOptionCode, rsvdStatusCode, lenderAddr, isDeleted);
+    }
+
+    @GetMapping("/reservation/{boardId}")
+    public RsvdDto getRsvdList(@PathVariable Long boardId){
+        return rsvdService.getRsvdList(boardId);
     }
 
 
