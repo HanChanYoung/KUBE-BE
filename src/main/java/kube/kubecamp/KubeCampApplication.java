@@ -14,6 +14,7 @@ import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 public class KubeCampApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(KubeCampApplication.class, args);
 
 	}
