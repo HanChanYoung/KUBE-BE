@@ -19,8 +19,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/{userId}")
-    public UserInfoDto getUser(@PathVariable String userId){
+    @GetMapping("/user/{userid}")
+    public UserInfoDto getUser(@PathVariable("userid") String userId){
         return userService.getUser(userId);
     }
 

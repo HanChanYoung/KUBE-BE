@@ -39,8 +39,8 @@ public class RsvdController {
                 delvyOptionCode, rsvdStatusCode, lenderAddr, isDeleted);
     }
 
-    @GetMapping("/reservation/{boardId}")
-    public RsvdDto getRsvdList(@PathVariable Long boardId){
+    @GetMapping("/reservation/{boardid}")
+    public RsvdDto getRsvdList(@PathVariable("boardid") Long boardId){
         return rsvdService.getRsvdList(boardId);
     }
 
