@@ -64,7 +64,9 @@ public class BoardServiceImpl implements BoardService {
             if((rsvdEntity2.getBoardId()==boardId)) {
 
                 localDateList = getReservedDate(rsvdEntity2.getRentStartDate(), rsvdEntity2.getRentEndDate());
+                localDateList.add(rsvdEntity2.getRentEndDate());
                 localDateList2.add(localDateList);
+
             }
         }
 
