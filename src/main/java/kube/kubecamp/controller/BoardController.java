@@ -9,6 +9,7 @@ import kube.kubecamp.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +25,12 @@ public class BoardController {
     @Autowired
     public BoardController(BoardService boardService){
         this.boardService=boardService;
+    }
+
+    @ModelAttribute
+    public void setResponseHeader(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin","*");
+
     }
     @GetMapping("/posts/{boardid}")
     public BoardDtoGet getBoardList(@PathVariable("boardid") Long boardId){
