@@ -6,9 +6,11 @@ import kube.kubecamp.service.RsvdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 
 @RestController
 @RequestMapping("/api")
@@ -21,6 +23,11 @@ public class RsvdController {
         this.rsvdService = rsvdService;
     }
 
+    @ModelAttribute
+    public void setResponseHeader(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin","*");
+
+    }
 
     @PostMapping("/reservation")
     public RsvdDto createRsvdList(@Valid @RequestBody RsvdDto rsvdDto) {
