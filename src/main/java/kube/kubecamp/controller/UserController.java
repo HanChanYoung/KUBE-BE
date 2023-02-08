@@ -8,13 +8,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
+import org.slf4j.Logger; // 인터페이스로 slf4j를 사용함
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api")
 public class UserController {
 
     private UserService userService;
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     public UserController(UserService userService){
