@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -20,12 +21,15 @@ public class UserServiceImpl implements UserService {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     private final RedisUserRepository redisUserRepository;
+
+
     @Autowired
     public UserServiceImpl (UserDataHandler userDataHandler, RedisUserRepository redisUserRepository){
         this.userDataHandler = userDataHandler;
         this.redisUserRepository=redisUserRepository;
     }
 
+    @Transactional(readOnly = false)
     @Override
     public UserInfoDto saveUser(String userId, String userName, String email, boolean isDeleted){
 
@@ -41,6 +45,7 @@ public class UserServiceImpl implements UserService {
         return userInfoDto;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public UserInfoDto getUser(String userId) {
         long startTime = System.currentTimeMillis();
