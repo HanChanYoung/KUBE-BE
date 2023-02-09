@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    master:
+      hikari:
+        username: kube
+        password: kube2023
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://172.16.67.141:3306/rep_db
+    slave:
+      hikari:
+        username: kube
+        password: kube2023
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://172.16.66.2:3307/rep_db
