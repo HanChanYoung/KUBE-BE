@@ -27,11 +27,11 @@ public class BoardController {
         this.boardService=boardService;
     }
 
-    @ModelAttribute
-    public void setResponseHeader(HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin","*");
-
-    }
+//    @ModelAttribute
+//    public void setResponseHeader(HttpServletResponse response) {
+//        response.setHeader("Access-Control-Allow-Origin","*");
+//
+//    }
     @GetMapping("/posts/{boardid}")
     public BoardDtoGet getBoardList(@PathVariable("boardid") Long boardId){
         return boardService.getBoardList(boardId);
