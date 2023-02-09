@@ -20,7 +20,6 @@ public class BoardEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     Long boardId;
 
     String providerId;
