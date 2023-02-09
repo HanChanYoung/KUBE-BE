@@ -23,11 +23,11 @@ public class RsvdController {
         this.rsvdService = rsvdService;
     }
 
-    @ModelAttribute
-    public void setResponseHeader(HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin","*");
-
-    }
+//    @ModelAttribute
+//    public void setResponseHeader(HttpServletResponse response) {
+//        response.setHeader("Access-Control-Allow-Origin","*");
+//
+//    }
 
     @PostMapping("/reservation")
     public RsvdDto createRsvdList(@Valid @RequestBody RsvdDto rsvdDto) {

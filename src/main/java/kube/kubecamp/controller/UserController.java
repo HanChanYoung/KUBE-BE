@@ -23,11 +23,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @ModelAttribute
-    public void setResponseHeader(HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin","*");
-
-    }
+//    @ModelAttribute
+//    public void setResponseHeader(HttpServletResponse response) {
+//        response.setHeader("Access-Control-Allow-Origin","*");
+//
+//    }
     @GetMapping("/user/{userid}")
     public UserInfoDto getUser(@PathVariable("userid") String userId){
         return userService.getUser(userId);
