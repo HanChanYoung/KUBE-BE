@@ -1,10 +1,10 @@
 package kube.kubecamp.service;
 
-import kube.kubecamp.data.dto.BoardDto;
+
 import kube.kubecamp.data.dto.RsvdDto;
 
 import java.time.LocalDate;
-import java.util.List;
+
 
 public interface RsvdService {
 
