@@ -5,9 +5,12 @@ import kube.kubecamp.data.entity.BoardEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
@@ -16,9 +19,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@RedisHash(value="board",timeToLive = 60)
+public class BoardDto implements Serializable {
 
-public class BoardDto {
-
+    private static final long serialVersionUID = -214490344996507077L;
+    @Id
     @NotNull
     @Column
     private Long boardId;

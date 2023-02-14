@@ -8,10 +8,12 @@ import kube.kubecamp.data.entity.BoardEntity;
 import kube.kubecamp.data.entity.RsvdEntity;
 import kube.kubecamp.data.handler.BoardDataHandler;
 import kube.kubecamp.data.handler.RsvdDataHandler;
+import kube.kubecamp.repository.RedisBoardRepository;
 import kube.kubecamp.service.BoardService;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,15 +25,19 @@ public class BoardServiceImpl implements BoardService {
 
     BoardDataHandler boardDataHandler;
     RsvdDataHandler rsvdDataHandler;
+    private final RedisBoardRepository redisBoardRepository;
 
     @Autowired
-    public  BoardServiceImpl(BoardDataHandler boardDataHandler,RsvdDataHandler rsvdDataHandler){
+    public  BoardServiceImpl(BoardDataHandler boardDataHandler,RsvdDataHandler rsvdDataHandler,
+                             RedisBoardRepository redisBoardRepository){
         this.boardDataHandler = boardDataHandler;
         this.rsvdDataHandler = rsvdDataHandler;
+        this.redisBoardRepository = redisBoardRepository;
     }
 
 
 
+    @Transactional(readOnly = false)
     @Override
     public BoardDto saveBoardList(Long boardId, String providerId, String categoryName, LocalDate rentStartDate,
                                   LocalDate rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
@@ -45,6 +51,7 @@ public class BoardServiceImpl implements BoardService {
                                             boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
 
+        redisBoardRepository.save(boardDto);
         return boardDto;
 
     }
