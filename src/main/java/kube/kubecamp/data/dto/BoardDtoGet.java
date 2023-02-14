@@ -2,9 +2,12 @@ package kube.kubecamp.data.dto;
 
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +18,12 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BoardDtoGet {
+@RedisHash(value="boardget",timeToLive = 60)
+public class BoardDtoGet implements Serializable {
 
+    private static final long serialVersionUID = -214490344996507077L;
 
-
+    @Id
     @NotNull
     private Long boardId;
 
