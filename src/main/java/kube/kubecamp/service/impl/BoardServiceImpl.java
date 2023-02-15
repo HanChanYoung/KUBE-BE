@@ -139,7 +139,7 @@ public class BoardServiceImpl implements BoardService {
                         .rentStartDate(boardEntity.getRentStartDate())
                         .rentEndDate(boardEntity.getRentEndDate())
                         .build();
-
+                log.info("this is dto {} ",boardDtoGetAll);
                 redisBoardGetAllRepository.save(boardDtoGetAll);
             }
 
