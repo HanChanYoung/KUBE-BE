@@ -3,11 +3,11 @@ package kube.kubecamp.service.impl;
 import kube.kubecamp.data.dto.BoardDto;
 import kube.kubecamp.data.dto.BoardDtoGet;
 import kube.kubecamp.data.dto.BoardDtoGetAll;
-import kube.kubecamp.data.dto.UserInfoDto;
 import kube.kubecamp.data.entity.BoardEntity;
 import kube.kubecamp.data.entity.RsvdEntity;
 import kube.kubecamp.data.handler.BoardDataHandler;
 import kube.kubecamp.data.handler.RsvdDataHandler;
+import kube.kubecamp.repository.RedisBoardGetAllRepository;
 import kube.kubecamp.repository.RedisBoardGetRepository;
 import kube.kubecamp.repository.RedisBoardRepository;
 import kube.kubecamp.service.BoardService;
@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,13 +33,16 @@ public class BoardServiceImpl implements BoardService {
     private final Logger log = LoggerFactory.getLogger(getClass());
     private final RedisBoardRepository redisBoardRepository;
     private final RedisBoardGetRepository redisBoardGetRepository;
+    private final RedisBoardGetAllRepository redisBoardGetAllRepository;
     @Autowired
     public  BoardServiceImpl(BoardDataHandler boardDataHandler,RsvdDataHandler rsvdDataHandler,
-                             RedisBoardRepository redisBoardRepository,RedisBoardGetRepository redisBoardGetRepository){
+                             RedisBoardRepository redisBoardRepository,RedisBoardGetRepository redisBoardGetRepository,
+                             RedisBoardGetAllRepository redisBoardGetAllRepository){
         this.boardDataHandler = boardDataHandler;
         this.rsvdDataHandler = rsvdDataHandler;
         this.redisBoardRepository = redisBoardRepository;
-        this.redisBoardGetRepository =redisBoardGetRepository;
+        this.redisBoardGetRepository = redisBoardGetRepository;
+        this.redisBoardGetAllRepository = redisBoardGetAllRepository;
     }
 
 
@@ -58,6 +62,7 @@ public class BoardServiceImpl implements BoardService {
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
 
         redisBoardRepository.save(boardDto);
+        log.info("Cache Data Saved!!!");
 
         log.info("Response DTO : {}",boardDto);
         return boardDto;
@@ -94,10 +99,12 @@ public class BoardServiceImpl implements BoardService {
         }
         else{
             log.info("Cache Data does NOT exist");
+            log.info("Cache Data Saving...\n...\n...");
             BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                     boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                     boardEntity.getImgSrc(),localDateList2);
             redisBoardGetRepository.save(boardDtoGet);
+            log.info("Cache Data Saved!!!");
         }
         BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                 boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
@@ -107,27 +114,67 @@ public class BoardServiceImpl implements BoardService {
         return boardDtoGet;
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public List<BoardDtoGetAll> getBoardListAll(){
+    public List<BoardDtoGetAll> getBoardListAll() {
+        long startTime = System.currentTimeMillis();
 
         List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
-        List<BoardDtoGetAll> boardDtoList = new ArrayList<>();
 
-        for(BoardEntity boardEntity:boardEntityList){
-            BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
-                    .boardId(boardEntity.getBoardId())
-                    .boardName(boardEntity.getBoardName())
-                    .boardDesc(boardEntity.getBoardDesc())
-                    .categoryName(boardEntity.getCategoryName())
-                    .price(boardEntity.getPrice())
-                    .imgSrc(boardEntity.getImgSrc())
-                    .rentStartDate(boardEntity.getRentStartDate())
-                    .rentEndDate(boardEntity.getRentEndDate())
-                    .build();
+        List<BoardDtoGetAll> boardDtoGetAllList = redisBoardGetAllRepository.findAll();
 
-            boardDtoList.add(boardDtoGetAll);
+        if (CollectionUtils.isEmpty(boardDtoGetAllList)) {
+            log.info("Cache Data does NOT exist");
+            log.info("Cache Data Saving...\n...\n...");
+
+
+            for (BoardEntity boardEntity : boardEntityList) {
+                BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
+                        .boardId(boardEntity.getBoardId())
+                        .boardName(boardEntity.getBoardName())
+                        .boardDesc(boardEntity.getBoardDesc())
+                        .categoryName(boardEntity.getCategoryName())
+                        .price(boardEntity.getPrice())
+                        .imgSrc(boardEntity.getImgSrc())
+                        .rentStartDate(boardEntity.getRentStartDate())
+                        .rentEndDate(boardEntity.getRentEndDate())
+                        .build();
+
+                redisBoardGetAllRepository.save(boardDtoGetAll);
+            }
+
+
+                log.info("Cache Data Saved!!!");
+
+            }
+        else{
+            log.info("Cache Data is exist");
+            log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
+
+            return boardDtoGetAllList;
+
         }
-        return boardDtoList;
+
+
+            List<BoardDtoGetAll> boardDtoList = new ArrayList<>();
+
+            for (BoardEntity boardEntity : boardEntityList) {
+                BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
+                        .boardId(boardEntity.getBoardId())
+                        .boardName(boardEntity.getBoardName())
+                        .boardDesc(boardEntity.getBoardDesc())
+                        .categoryName(boardEntity.getCategoryName())
+                        .price(boardEntity.getPrice())
+                        .imgSrc(boardEntity.getImgSrc())
+                        .rentStartDate(boardEntity.getRentStartDate())
+                        .rentEndDate(boardEntity.getRentEndDate())
+                        .build();
+
+                boardDtoList.add(boardDtoGetAll);
+            }
+
+
+            return boardDtoList;
 
     }
 

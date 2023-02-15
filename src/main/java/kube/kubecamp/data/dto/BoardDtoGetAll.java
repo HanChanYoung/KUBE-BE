@@ -3,9 +3,12 @@ package kube.kubecamp.data.dto;
 import kube.kubecamp.data.entity.BoardEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
@@ -14,9 +17,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@RedisHash(value="boardGetAll",timeToLive = 60)
+public class BoardDtoGetAll implements Serializable {
 
-public class BoardDtoGetAll {
+    private static final long serialVersionUID = -214490344996507077L;
 
+    @Id
     @NotNull
     @Column
     private Long boardId;
