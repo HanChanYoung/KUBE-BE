@@ -122,7 +122,7 @@ public class BoardServiceImpl implements BoardService {
         List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
 
         List<BoardDtoGetAll> boardDtoGetAllList = redisBoardGetAllRepository.findAll();
-
+        log.info("fisrt board get list {} ", boardDtoGetAllList);
         if (CollectionUtils.isEmpty(boardDtoGetAllList)) {
             log.info("Cache Data does NOT exist");
             log.info("Cache Data Saving...\n...\n...");
@@ -150,7 +150,7 @@ public class BoardServiceImpl implements BoardService {
         else{
             log.info("Cache Data is exist");
             log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-
+            log.info("this is alllllllll {}",boardDtoGetAllList);
             return boardDtoGetAllList;
 
         }
