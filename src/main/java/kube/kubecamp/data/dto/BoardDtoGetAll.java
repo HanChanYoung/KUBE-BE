@@ -27,6 +27,7 @@ public class BoardDtoGetAll implements Serializable {
     @Column
     private Long boardId;
 
+
     @Column
     private String categoryName;
 
