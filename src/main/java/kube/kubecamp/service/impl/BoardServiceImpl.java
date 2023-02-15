@@ -99,18 +99,19 @@ public class BoardServiceImpl implements BoardService {
         }
         else{
             log.info("Cache Data does NOT exist");
-            log.info("Cache Data Saving...\n...\n...");
-            BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
-                    boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
-                    boardEntity.getImgSrc(),localDateList2);
-            redisBoardGetRepository.save(boardDtoGet);
-            log.info("Cache Data Saved!!!");
+            log.info("Cache Data Saving...\n...\n...\n...");
+
         }
         BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                 boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                 boardEntity.getImgSrc(),localDateList2);
+
+            redisBoardGetRepository.save(boardDtoGet);
+
+        log.info("Cache Data Saved!!!");
         log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
         log.info("Response DTO : {}",boardDtoGet);
+
         return boardDtoGet;
     }
 
@@ -122,12 +123,10 @@ public class BoardServiceImpl implements BoardService {
         List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
 
         List<BoardDtoGetAll> boardDtoGetAllList = redisBoardGetAllRepository.findAll();
-        log.info("fisrt board get list {} ", boardDtoGetAllList);
 
         if(!CollectionUtils.isEmpty(boardDtoGetAllList)&&!boardDtoGetAllList.contains(null)){
             log.info("Cache Data is exist");
             log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-            log.info("this is alllllllll {}",boardDtoGetAllList);
 
             return boardDtoGetAllList;
         }
@@ -147,7 +146,7 @@ public class BoardServiceImpl implements BoardService {
                         .rentStartDate(boardEntity.getRentStartDate())
                         .rentEndDate(boardEntity.getRentEndDate())
                         .build();
-                log.info("this is dto {} ",boardDtoGetAll);
+
                 redisBoardGetAllRepository.save(boardDtoGetAll);
             }
 
