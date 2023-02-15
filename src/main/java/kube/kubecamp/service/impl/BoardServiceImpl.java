@@ -124,6 +124,7 @@ public class BoardServiceImpl implements BoardService {
 
         List<BoardDtoGetAll> boardDtoGetAllList = redisBoardGetAllRepository.findAll();
         log.info("\n\n\n\n\n\n\n\n\n\n\n {}",boardDtoGetAllList);
+
         if(!CollectionUtils.isEmpty(boardDtoGetAllList)&&(boardDtoGetAllList.contains(null)==false)){
             log.info("Cache Data is exist");
             log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
