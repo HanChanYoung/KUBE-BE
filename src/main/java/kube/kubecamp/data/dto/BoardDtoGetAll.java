@@ -22,7 +22,7 @@ public class BoardDtoGetAll implements Serializable {
 
     private static final long serialVersionUID = -214490344996507077L;
 
-
+    @Id
     @NotNull
     @Column
     private Long boardId;
