@@ -95,6 +95,7 @@ public class BoardServiceImpl implements BoardService {
         if (foundResponseDto.isPresent()) {
             log.info("Cache Data is exist");
             log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
+            log.info("\n\n\n\n\n\n\n\n\n\n\n\n\n {}",localDateList2);
             return foundResponseDto.get();
         }
         else{
