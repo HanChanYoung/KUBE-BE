@@ -45,6 +45,7 @@ public class BoardDtoGet implements Serializable {
 
     private String imgSrc;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private List<List<LocalDate>> reservedDate;
 
 
