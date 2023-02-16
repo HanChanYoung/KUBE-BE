@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @RedisHash(value="boardGet",timeToLive = 60)
 public class BoardDtoGet implements Serializable {
 
-    //private static final long serialVersionUID = -214490344996507077L;
+    private static final long serialVersionUID = -214490344996507077L;
 
     @Id
     @NotNull
