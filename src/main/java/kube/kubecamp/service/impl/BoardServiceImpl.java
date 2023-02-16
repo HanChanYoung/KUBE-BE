@@ -61,7 +61,7 @@ public class BoardServiceImpl implements BoardService {
                                             boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
 
-        redisBoardRepository.save(boardDto);
+        //redisBoardRepository.save(boardDto);
         log.info("Cache Data Saved!!!");
 
         log.info("Response DTO : {}",boardDto);
