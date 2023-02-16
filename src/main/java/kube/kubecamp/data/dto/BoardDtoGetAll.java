@@ -1,5 +1,6 @@
 package kube.kubecamp.data.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import kube.kubecamp.data.entity.BoardEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -32,9 +33,11 @@ public class BoardDtoGetAll implements Serializable {
     private String categoryName;
 
     @Column
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate rentStartDate;
 
     @Column
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate rentEndDate;
 
     @Column
