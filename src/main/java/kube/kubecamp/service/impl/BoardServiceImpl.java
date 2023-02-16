@@ -47,7 +47,7 @@ public class BoardServiceImpl implements BoardService {
 
 
 
-    @Transactional(readOnly = false)
+ //   @Transactional(readOnly = false)
     @Override
     public BoardDto saveBoardList(Long boardId, String providerId, String categoryName, LocalDate rentStartDate,
                                   LocalDate rentEndDate, String boardName, String boardDesc, float price, String stateStatusCode,
@@ -70,7 +70,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
 
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     @Override
     public BoardDtoGet getBoardList(Long boardId){
         long startTime = System.currentTimeMillis();
@@ -124,7 +124,7 @@ public class BoardServiceImpl implements BoardService {
         return boardDtoGet;
     }
 
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     @Override
     public List<BoardDtoGetAll> getBoardListAll() {
         long startTime = System.currentTimeMillis();
