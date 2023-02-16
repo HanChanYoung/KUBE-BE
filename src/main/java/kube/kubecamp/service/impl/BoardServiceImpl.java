@@ -103,7 +103,7 @@ public class BoardServiceImpl implements BoardService {
             BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                     boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                     boardEntity.getImgSrc(),localDateList2);
-
+            log.info("\n\n\n\n\n\n\n\n\n\n\n\n\n {}",localDateList2);
             redisBoardGetRepository.save(boardDtoGet);
 
         }
