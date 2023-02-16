@@ -113,7 +113,7 @@ public class BoardServiceImpl implements BoardService {
 
         log.info("Cache Data Saved!!!");
         log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-        log.info("Response DTO : {}",boardDtoGet);
+        //log.info("Response DTO : {}",boardDtoGet);
 
         return boardDtoGet;
     }
