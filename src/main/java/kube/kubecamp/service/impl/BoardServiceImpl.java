@@ -34,16 +34,20 @@ public class BoardServiceImpl implements BoardService {
     private final RedisBoardRepository redisBoardRepository;
     private final RedisBoardGetRepository redisBoardGetRepository;
     private final RedisBoardGetAllRepository redisBoardGetAllRepository;
+
+    public PingServiceImpl pingServiceImpl;
     @Autowired
     public  BoardServiceImpl(BoardDataHandler boardDataHandler,RsvdDataHandler rsvdDataHandler,
                              RedisBoardRepository redisBoardRepository,RedisBoardGetRepository redisBoardGetRepository,
-                             RedisBoardGetAllRepository redisBoardGetAllRepository){
+                             RedisBoardGetAllRepository redisBoardGetAllRepository,PingServiceImpl pingServiceImpl){
         this.boardDataHandler = boardDataHandler;
         this.rsvdDataHandler = rsvdDataHandler;
         this.redisBoardRepository = redisBoardRepository;
         this.redisBoardGetRepository = redisBoardGetRepository;
         this.redisBoardGetAllRepository = redisBoardGetAllRepository;
+        this.pingServiceImpl = pingServiceImpl;
     }
+
 
 
 
