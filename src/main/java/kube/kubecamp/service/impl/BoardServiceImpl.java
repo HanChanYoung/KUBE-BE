@@ -100,13 +100,16 @@ public class BoardServiceImpl implements BoardService {
         else{
             log.info("Cache Data does NOT exist");
             log.info("Cache Data Saving...\n...\n...\n...");
+            BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
+                    boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
+                    boardEntity.getImgSrc(),localDateList2);
+
+            redisBoardGetRepository.save(boardDtoGet);
 
         }
         BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                 boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                 boardEntity.getImgSrc(),localDateList2);
-
-            redisBoardGetRepository.save(boardDtoGet);
 
         log.info("Cache Data Saved!!!");
         log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
@@ -135,7 +138,7 @@ public class BoardServiceImpl implements BoardService {
             log.info("Cache Data does NOT exist");
             log.info("Cache Data Saving...\n...\n...\n...");
 
-
+            List<BoardDtoGetAll> boardDtoList = new ArrayList<>();
             for (BoardEntity boardEntity : boardEntityList) {
                 BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
                         .boardId(boardEntity.getBoardId())
@@ -148,7 +151,8 @@ public class BoardServiceImpl implements BoardService {
                         .rentEndDate(boardEntity.getRentEndDate())
                         .build();
 
-                redisBoardGetAllRepository.save(boardDtoGetAll);
+                 redisBoardGetAllRepository.save(boardDtoGetAll);
+
             }
 
 
