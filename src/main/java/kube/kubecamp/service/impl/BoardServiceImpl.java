@@ -35,18 +35,21 @@ public class BoardServiceImpl implements BoardService {
     private final RedisBoardGetRepository redisBoardGetRepository;
     private final RedisBoardGetAllRepository redisBoardGetAllRepository;
 
-    public PingServiceImpl pingServiceImpl;
+
     @Autowired
-    public  BoardServiceImpl(BoardDataHandler boardDataHandler,RsvdDataHandler rsvdDataHandler,
+    public BoardServiceImpl(BoardDataHandler boardDataHandler,RsvdDataHandler rsvdDataHandler,
                              RedisBoardRepository redisBoardRepository,RedisBoardGetRepository redisBoardGetRepository,
-                             RedisBoardGetAllRepository redisBoardGetAllRepository,PingServiceImpl pingServiceImpl){
+                             RedisBoardGetAllRepository redisBoardGetAllRepository){
         this.boardDataHandler = boardDataHandler;
         this.rsvdDataHandler = rsvdDataHandler;
         this.redisBoardRepository = redisBoardRepository;
         this.redisBoardGetRepository = redisBoardGetRepository;
         this.redisBoardGetAllRepository = redisBoardGetAllRepository;
-        this.pingServiceImpl = pingServiceImpl;
     }
+
+    PingServiceImpl pingService = new PingServiceImpl();
+    int statusCode = pingService.PingCheck();
+
 
 
 
@@ -64,7 +67,7 @@ public class BoardServiceImpl implements BoardService {
                                             boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                                             boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
-
+        log.info("asasfasdfadfasdfasdfafsd {}",statusCode);
         redisBoardRepository.save(boardDto);
         log.info("Cache Data Saved!!!");
 

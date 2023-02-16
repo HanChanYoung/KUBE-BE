@@ -28,6 +28,7 @@ public class PingServiceImpl {
         return result;
     }
 
+
     public int PingCheck() {
         log.info("start");
         int statusCode = 0;
@@ -73,6 +74,7 @@ public class PingServiceImpl {
             }
 
             log.info("log {}",statusCode);
+
             return statusCode;
         }
 
