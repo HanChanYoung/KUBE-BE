@@ -39,7 +39,7 @@ public class DataSourceConfiguration {
         dataSourceMap.put("master", masterDataSource);
         dataSourceMap.put("slave", slaveDataSource);
         routingDataSource.setTargetDataSources(dataSourceMap);
-        routingDataSource.setDefaultTargetDataSource(masterDataSource);
+        routingDataSource.setDefaultTargetDataSource(slaveDataSource);
 
         return routingDataSource;
     }
