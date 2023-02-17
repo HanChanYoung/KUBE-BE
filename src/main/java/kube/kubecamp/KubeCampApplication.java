@@ -1,6 +1,7 @@
 package kube.kubecamp;
 
 
+import kube.kubecamp.service.impl.PingServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -16,6 +17,8 @@ public class KubeCampApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(KubeCampApplication.class, args);
+		PingServiceImpl pingService = new PingServiceImpl();
+		pingService.PingCheck();
 
 	}
 

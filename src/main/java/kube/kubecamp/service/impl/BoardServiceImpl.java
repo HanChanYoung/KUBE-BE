@@ -47,8 +47,7 @@ public class BoardServiceImpl implements BoardService {
         this.redisBoardGetAllRepository = redisBoardGetAllRepository;
     }
 
-    PingServiceImpl pingService = new PingServiceImpl();
-    int k = pingService.PingCheck();
+
 
 
 
