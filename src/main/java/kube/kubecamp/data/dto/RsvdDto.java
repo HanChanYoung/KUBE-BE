@@ -1,6 +1,7 @@
 package kube.kubecamp.data.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import kube.kubecamp.data.entity.RsvdEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -25,8 +26,10 @@ public class RsvdDto {
     @NotNull
     private String lenderId;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate rentStartDate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate rentEndDate;
 
     private String delvyOptionCode;

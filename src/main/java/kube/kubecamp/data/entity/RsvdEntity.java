@@ -1,5 +1,6 @@
 package kube.kubecamp.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -24,8 +25,10 @@ public class RsvdEntity extends BaseTimeEntity {
 
     String lenderId;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     LocalDate rentStartDate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     LocalDate rentEndDate;
 
     String delvyOptionCode;
