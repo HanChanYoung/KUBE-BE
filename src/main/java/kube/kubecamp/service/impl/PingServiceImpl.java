@@ -15,7 +15,7 @@ import java.util.*;
 public class PingServiceImpl {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    public static boolean availablePort(String host, int port) {
+    public boolean availablePort(String host, int port) {
         boolean result = false;
 
         try {
@@ -30,7 +30,8 @@ public class PingServiceImpl {
 
 
     public int PingCheck() {
-        log.info("start");
+        log.info("startsssssssssssss\n\n\n");
+        boolean result = false;
         int statusCode = 0;
         int[] addressTmp = {10529, 10213};
         String[] addressName = {"DB-Master", "DB-Slave"};
@@ -44,8 +45,15 @@ public class PingServiceImpl {
                     Thread.sleep(3000);
 
                     InetAddress targetIp = InetAddress.getByName("210.109.63.98");
+                    try {
+                        (new Socket("210.109.63.98", addressTmp[i])).close();
 
-                    boolean value = availablePort("210.109.63.98", addressTmp[i]);
+                        result = true;
+                    } catch (Exception e) {
+
+                    }
+                   // boolean value = availablePort("210.109.63.98", addressTmp[i]);
+                    boolean value = result;
 
                     if (value) {
                         StatusPing.add("S");

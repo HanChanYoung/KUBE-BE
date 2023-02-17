@@ -48,9 +48,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     PingServiceImpl pingService = new PingServiceImpl();
-    int statusCode = pingService.PingCheck();
-
-
+    int k = pingService.PingCheck();
 
 
 
@@ -67,7 +65,8 @@ public class BoardServiceImpl implements BoardService {
                                             boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                                             boardEntity.getStateStatusCode(),boardEntity.getDelvyStatusCode(),boardEntity.getBoardAddr(),
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
-        log.info("asasfasdfadfasdfasdfafsd {}",statusCode);
+
+
         redisBoardRepository.save(boardDto);
         log.info("Cache Data Saved!!!");
 
@@ -106,6 +105,7 @@ public class BoardServiceImpl implements BoardService {
             log.info("\n\n\n\n\n\n\n\n\n\n\n\n\n {}",foundResponseDto);
 
 
+
             return foundResponseDto.get();
         }
         else{
@@ -118,6 +118,7 @@ public class BoardServiceImpl implements BoardService {
 
             log.info("\n\n\n\n\n\n\n\n\n\n\n\n\n {}",boardDtoGet.getReservedDate());
             redisBoardGetRepository.save(boardDtoGet);
+
 
         }
         BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
@@ -151,7 +152,7 @@ public class BoardServiceImpl implements BoardService {
             log.info("Cache Data does NOT exist");
             log.info("Cache Data Saving...\n...\n...\n...");
 
-            List<BoardDtoGetAll> boardDtoList = new ArrayList<>();
+
             for (BoardEntity boardEntity : boardEntityList) {
                 BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
                         .boardId(boardEntity.getBoardId())

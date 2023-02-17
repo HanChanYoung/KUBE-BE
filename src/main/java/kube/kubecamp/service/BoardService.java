@@ -18,4 +18,5 @@ public interface BoardService {
 
 
     List<BoardDtoGetAll> getBoardListAll();
+
 }
