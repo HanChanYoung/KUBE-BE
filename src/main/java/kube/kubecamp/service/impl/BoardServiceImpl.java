@@ -72,8 +72,8 @@ public class BoardServiceImpl implements BoardService {
                                             boardEntity.getImgSrc(),boardEntity.isDeleted());
 
 
-//        redisBoardRepository.save(boardDto);
-//        log.info("Cache Data Saved!!!");
+        redisBoardRepository.save(boardDto);
+        log.info("Cache Data Saved!!!");
 
         log.info("Response DTO : {}",boardDto);
         return boardDto;
@@ -144,41 +144,41 @@ public class BoardServiceImpl implements BoardService {
 
         List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
 
-//        List<BoardDtoGetAll> boardDtoGetAllList = redisBoardGetAllRepository.findAll();
-//
-//
-//        if(!CollectionUtils.isEmpty(boardDtoGetAllList)&&(boardDtoGetAllList.contains(null)==false)){
-//            log.info("Cache Data is exist");
-//            log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-//
-//            return boardDtoGetAllList;
-//        }
-//        else{
-//            log.info("Cache Data does NOT exist");
-//            log.info("Cache Data Saving...\n...\n...\n...");
-//
-//
-//            for (BoardEntity boardEntity : boardEntityList) {
-//                BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
-//                        .boardId(boardEntity.getBoardId())
-//                        .boardName(boardEntity.getBoardName())
-//                        .boardDesc(boardEntity.getBoardDesc())
-//                        .categoryName(boardEntity.getCategoryName())
-//                        .price(boardEntity.getPrice())
-//                        .imgSrc(boardEntity.getImgSrc())
-//                        .rentStartDate(boardEntity.getRentStartDate())
-//                        .rentEndDate(boardEntity.getRentEndDate())
-//                        .build();
-//
-//                 redisBoardGetAllRepository.save(boardDtoGetAll);
-//
-//            }
-//
-//
-//                log.info("Cache Data Saved!!!");
-//
-//        }
-//
+        List<BoardDtoGetAll> boardDtoGetAllList = redisBoardGetAllRepository.findAll();
+
+
+        if(!CollectionUtils.isEmpty(boardDtoGetAllList)&&(boardDtoGetAllList.contains(null)==false)){
+            log.info("Cache Data is exist");
+            log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
+
+            return boardDtoGetAllList;
+        }
+        else{
+            log.info("Cache Data does NOT exist");
+            log.info("Cache Data Saving...\n...\n...\n...");
+
+
+            for (BoardEntity boardEntity : boardEntityList) {
+                BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
+                        .boardId(boardEntity.getBoardId())
+                        .boardName(boardEntity.getBoardName())
+                        .boardDesc(boardEntity.getBoardDesc())
+                        .categoryName(boardEntity.getCategoryName())
+                        .price(boardEntity.getPrice())
+                        .imgSrc(boardEntity.getImgSrc())
+                        .rentStartDate(boardEntity.getRentStartDate())
+                        .rentEndDate(boardEntity.getRentEndDate())
+                        .build();
+
+                 redisBoardGetAllRepository.save(boardDtoGetAll);
+
+            }
+
+
+                log.info("Cache Data Saved!!!");
+
+        }
+
 
             List<BoardDtoGetAll> boardDtoList = new ArrayList<>();
 
