@@ -142,7 +142,7 @@ public class BoardServiceImpl implements BoardService {
     public List<BoardDtoGetAll> getBoardListAll() {
         long startTime = System.currentTimeMillis();
 
-        List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
+//        List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
 
         List<BoardDtoGetAll> boardDtoGetAllList = redisBoardGetAllRepository.findAll();
 
@@ -157,6 +157,7 @@ public class BoardServiceImpl implements BoardService {
             log.info("Cache Data does NOT exist");
             log.info("Cache Data Saving...\n...\n...\n...");
 
+            List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
 
             for (BoardEntity boardEntity : boardEntityList) {
                 BoardDtoGetAll boardDtoGetAll = BoardDtoGetAll.builder()
@@ -178,7 +179,7 @@ public class BoardServiceImpl implements BoardService {
                 log.info("Cache Data Saved!!!");
 
         }
-
+            List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
 
             List<BoardDtoGetAll> boardDtoList = new ArrayList<>();
 
