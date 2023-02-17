@@ -97,6 +97,9 @@ public class PingServiceImpl {
         public String getBack(){
             return this.back;
         }
+        public boolean getOption(){
+            return this.option;
+        }
 
 
 

@@ -16,6 +16,7 @@ import java.util.HashMap;
 @Configuration
 public class DataSourceConfiguration {
 
+
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.master.hikari")
     public DataSource masterDataSource(){
