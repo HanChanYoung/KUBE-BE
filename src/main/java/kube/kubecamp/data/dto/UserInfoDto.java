@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @Builder
-@RedisHash(value="user",timeToLive = 60)
+@RedisHash(value="user")
 public class UserInfoDto implements Serializable {
 
     private static final long serialVersionUID = -214490344996507077L;
