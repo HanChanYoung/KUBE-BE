@@ -130,9 +130,9 @@ public class BoardServiceImpl implements BoardService {
                 boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                 boardEntity.getImgSrc(),localDateList2);
 
-//        log.info("Cache Data Saved!!!");
+
         log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-        //log.info("Response DTO : {}",boardDtoGet);
+
 
         return boardDtoGet;
     }
