@@ -17,8 +17,8 @@ public class KubeCampApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(KubeCampApplication.class, args);
-		PingServiceImpl pingService = new PingServiceImpl();
-		pingService.PingCheck();
+//		PingServiceImpl pingService = new PingServiceImpl();
+//		pingService.PingCheck();
 
 	}
 

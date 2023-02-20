@@ -142,7 +142,6 @@ public class BoardServiceImpl implements BoardService {
     public List<BoardDtoGetAll> getBoardListAll() {
         long startTime = System.currentTimeMillis();
 
-//        List<BoardEntity> boardEntityList = boardDataHandler.getBoardListAllEntity();
 
         List<BoardDtoGetAll> boardDtoGetAllList = redisBoardGetAllRepository.findAll();
 
@@ -198,7 +197,7 @@ public class BoardServiceImpl implements BoardService {
                 boardDtoList.add(boardDtoGetAll);
             }
 
-
+            log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
             return boardDtoList;
 
     }
