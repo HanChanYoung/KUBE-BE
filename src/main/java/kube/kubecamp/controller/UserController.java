@@ -3,6 +3,7 @@ package kube.kubecamp.controller;
 
 import kube.kubecamp.data.dto.UserInfoDto;
 import kube.kubecamp.service.UserService;
+import kube.kubecamp.service.impl.PingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,9 @@ public class UserController {
     private UserService userService;
     private final Logger log = LoggerFactory.getLogger(getClass());
 
+    PingServiceImpl pingService = new PingServiceImpl();
+    int num = pingService.getOption();
+
     @Autowired
     public UserController(UserService userService){
         this.userService = userService;
@@ -30,7 +34,13 @@ public class UserController {
 //    }
     @GetMapping("/user/{userid}")
     public UserInfoDto getUser(@PathVariable("userid") String userId){
-        return userService.getUser(userId);
+
+        if(num==0){
+            return userService.getUser(userId);
+        }
+        else{
+            return userService.getUsers(userId);
+        }
     }
 
     @PostMapping("/user")

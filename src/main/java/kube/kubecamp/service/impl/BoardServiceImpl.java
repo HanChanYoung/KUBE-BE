@@ -35,10 +35,6 @@ public class BoardServiceImpl implements BoardService {
     private final RedisBoardGetRepository redisBoardGetRepository;
     private final RedisBoardGetAllRepository redisBoardGetAllRepository;
 
-    PingServiceImpl pingService = new PingServiceImpl();
-
-    boolean option = pingService.getOption();
-
 
 
 
