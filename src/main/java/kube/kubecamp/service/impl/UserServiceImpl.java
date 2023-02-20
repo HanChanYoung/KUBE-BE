@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         return userInfoDto;
     }
 
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = true)
     @Override
     public UserInfoDto getUser(String userId) {
         long startTime = System.currentTimeMillis();
