@@ -16,7 +16,7 @@ public class PingServiceImpl {
 
     public String front;
     public String back;
-    public boolean option;
+    public int option;
 
 
 
@@ -69,17 +69,17 @@ public class PingServiceImpl {
                 if (masterStatus == "S" && slaveStatus == "S") {
                     front = "slave";
                     back = "master";
-                    option = true;
+                    option = 0;
 
                 } else if (masterStatus == "S" && slaveStatus == "F") {
                     front = "slave";
                     back = "master";
-                    option = false;
+                    option = 1;
 
                 } else if (masterStatus == "F" && slaveStatus == "S") {
                     front = "master";
                     back = "slave";
-                    option = false;
+                    option = 2;
 
                 } else {
 
@@ -97,7 +97,7 @@ public class PingServiceImpl {
         public String getBack(){
             return this.back;
         }
-        public boolean getOption(){return this.option;}
+        public int getOption(){return this.option;}
 
 
 
