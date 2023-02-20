@@ -25,7 +25,7 @@ public class PingServiceImpl {
 
 
             System.out.println("Start");
-            boolean result = false;
+            //boolean result = false;
 
             String[] hostTmp = {"172.16.67.141", "172.16.66.2"};
             int[] addressTmp = {3306, 3307};
@@ -40,6 +40,7 @@ public class PingServiceImpl {
                         Thread.sleep(1000);
 
                         InetAddress targetIp = InetAddress.getByName(hostTmp[i]);
+                        boolean result = false;
                         try {
                             (new Socket(hostTmp[i], addressTmp[i])).close();
 
