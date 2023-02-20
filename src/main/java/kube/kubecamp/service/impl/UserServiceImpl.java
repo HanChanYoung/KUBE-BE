@@ -52,18 +52,39 @@ public class UserServiceImpl implements UserService {
 
         UserEntity userEntity = userDataHandler.getUserEntity(userId);
 
-        Optional<UserInfoDto> foundResponseDto = redisUserRepository.findById(userId);
-        if (foundResponseDto.isPresent()) {
+
+        try{
+            Optional<UserInfoDto> foundResponseDto = redisUserRepository.findById(userId);
+
+            if (foundResponseDto.isPresent()) {
             log.info("Cache Data is exist");
             log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
             return foundResponseDto.get();
-        }
-        else{
+              }
+             else{
             log.info("Cache Data does NOT exist");
             UserInfoDto userInfoDto = new UserInfoDto(userEntity.getUserId(), userEntity.getUserName(),
                     userEntity.getEmail(),userEntity.getIsDeleted());
             redisUserRepository.save(userInfoDto);
+            }
+        }catch (Exception e){
+            log.info("log {}",e.getMessage());
         }
+
+
+//        Optional<UserInfoDto> foundResponseDto = redisUserRepository.findById(userId);
+//
+//        if (foundResponseDto.isPresent()) {
+//            log.info("Cache Data is exist");
+//            log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
+//            return foundResponseDto.get();
+//        }
+//        else{
+//            log.info("Cache Data does NOT exist");
+//            UserInfoDto userInfoDto = new UserInfoDto(userEntity.getUserId(), userEntity.getUserName(),
+//                    userEntity.getEmail(),userEntity.getIsDeleted());
+//            redisUserRepository.save(userInfoDto);
+//        }
 
 
         UserInfoDto userInfoDto = new UserInfoDto(userEntity.getUserId(), userEntity.getUserName(),
