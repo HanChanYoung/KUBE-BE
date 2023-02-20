@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
             if (foundResponseDto.isPresent()) {
             log.info("Cache Data is exist");
-            log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
+//            log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
             return foundResponseDto.get();
               }
              else{
@@ -89,8 +89,8 @@ public class UserServiceImpl implements UserService {
 
         UserInfoDto userInfoDto = new UserInfoDto(userEntity.getUserId(), userEntity.getUserName(),
                 userEntity.getEmail(),userEntity.getIsDeleted());
-
-        log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
+        log.info("DB SELECTs");
+//        log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
 //        log.info("Response DTO : {}",userInfoDto);
         return userInfoDto;
     }
