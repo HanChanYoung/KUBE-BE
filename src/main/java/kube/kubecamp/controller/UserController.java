@@ -36,9 +36,12 @@ public class UserController {
     public UserInfoDto getUser(@PathVariable("userid") String userId){
 
         if(num==0){
+            log.info("num0000");
             return userService.getUser(userId);
+
         }
         else{
+            log.info("ELSE ELSE ELES");
             return userService.getUsers(userId);
         }
     }
