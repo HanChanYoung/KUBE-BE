@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
             redisUserRepository.save(userInfoDto);
             }
         }catch (Exception e){
-            log.info("log {}",e.getMessage());
+            e.getMessage();
         }
 
 
@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
                 userEntity.getEmail(),userEntity.getIsDeleted());
 
         log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-        log.info("Response DTO : {}",userInfoDto);
+//        log.info("Response DTO : {}",userInfoDto);
         return userInfoDto;
     }
 
