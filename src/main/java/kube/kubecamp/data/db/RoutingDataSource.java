@@ -14,15 +14,11 @@ public class RoutingDataSource extends AbstractRoutingDataSource {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     @Override
-    public Object determineCurrentLookupKey() {
+    protected Object determineCurrentLookupKey() {
         log.info("happys {}",front);
         log.info("kkkkkk {}",back);
-        log.info("asd {}",TransactionSynchronizationManager.isCurrentTransactionReadOnly());
-        String a = "master";
-        if(TransactionSynchronizationManager.isCurrentTransactionReadOnly()){
-            a="slave";
-        }
-        return (a);
+
+        return (TransactionSynchronizationManager.isCurrentTransactionReadOnly()) ? "slave" : "master";
     }
 
 

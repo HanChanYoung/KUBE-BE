@@ -87,8 +87,6 @@ public class PingServiceImpl {
 
                 }
 
-//                RoutingDataSource routingDataSource = new RoutingDataSource();
-//                routingDataSource.determineCurrentLookupKey();
                 System.out.println(option);
 
 
