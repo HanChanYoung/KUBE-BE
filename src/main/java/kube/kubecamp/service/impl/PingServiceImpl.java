@@ -87,7 +87,7 @@ public class PingServiceImpl {
 
                 }
 
-                System.out.println(option);
+
 
 
             }
