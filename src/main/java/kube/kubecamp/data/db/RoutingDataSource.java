@@ -8,9 +8,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 public class RoutingDataSource extends AbstractRoutingDataSource {
 
-    PingServiceImpl pingService = new PingServiceImpl();
-    String front = pingService.getFront();
-    String back = pingService.getBack();
+
 
     @Override
     protected Object determineCurrentLookupKey() {
