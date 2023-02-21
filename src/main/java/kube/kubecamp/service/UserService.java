@@ -8,6 +8,6 @@ public interface UserService {
 
     UserInfoDto getUser(String userId);
 
- //   UserInfoDto getUsers(String userId);
+
 
 }
