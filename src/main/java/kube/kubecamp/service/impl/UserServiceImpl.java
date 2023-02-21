@@ -79,40 +79,40 @@ public class UserServiceImpl implements UserService {
         log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
         return userInfoDto;
     }
-    @Transactional(readOnly = false)
-    @Override
-    public UserInfoDto getUsers(String userId) {
-        long startTime = System.currentTimeMillis();
-
-        UserEntity userEntity = userDataHandler.getUserEntity(userId);
-
-
-        try{
-            Optional<UserInfoDto> foundResponseDto = redisUserRepository.findById(userId);
-
-            if (foundResponseDto.isPresent()) {
-                log.info("Cache Data is exist");
-                log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-                return foundResponseDto.get();
-            }
-            else{
-
-                log.info("Cache Data does NOT exist");
-
-            }
-        }catch (Exception e){
-            e.getMessage();
-        }
-
-
-        UserInfoDto userInfoDto = new UserInfoDto(userEntity.getUserId(), userEntity.getUserName(),
-                userEntity.getEmail(),userEntity.getIsDeleted());
-
-        redisUserRepository.save(userInfoDto);
-        log.info("DB SELECTS");
-        log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-        return userInfoDto;
-    }
+//    @Transactional(readOnly = false)
+//    @Override
+//    public UserInfoDto getUsers(String userId) {
+//        long startTime = System.currentTimeMillis();
+//
+//        UserEntity userEntity = userDataHandler.getUserEntity(userId);
+//
+//
+//        try{
+//            Optional<UserInfoDto> foundResponseDto = redisUserRepository.findById(userId);
+//
+//            if (foundResponseDto.isPresent()) {
+//                log.info("Cache Data is exist");
+//                log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
+//                return foundResponseDto.get();
+//            }
+//            else{
+//
+//                log.info("Cache Data does NOT exist");
+//
+//            }
+//        }catch (Exception e){
+//            e.getMessage();
+//        }
+//
+//
+//        UserInfoDto userInfoDto = new UserInfoDto(userEntity.getUserId(), userEntity.getUserName(),
+//                userEntity.getEmail(),userEntity.getIsDeleted());
+//
+//        redisUserRepository.save(userInfoDto);
+//        log.info("DB SELECTS");
+//        log.info("[getUser] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
+//        return userInfoDto;
+//    }
 
 
 
