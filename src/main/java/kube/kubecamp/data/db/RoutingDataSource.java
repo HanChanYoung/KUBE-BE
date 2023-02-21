@@ -17,8 +17,12 @@ public class RoutingDataSource extends AbstractRoutingDataSource {
     public Object determineCurrentLookupKey() {
         log.info("happys {}",front);
         log.info("kkkkkk {}",back);
-
-        return (TransactionSynchronizationManager.isCurrentTransactionReadOnly()) ? "slave" : "master";
+        log.info("asd {}",TransactionSynchronizationManager.isCurrentTransactionReadOnly());
+        String a = "master";
+        if(TransactionSynchronizationManager.isCurrentTransactionReadOnly()){
+            a="slave";
+        }
+        return (a);
     }
 
 
