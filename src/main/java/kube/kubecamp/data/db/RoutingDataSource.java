@@ -12,11 +12,8 @@ public class RoutingDataSource extends AbstractRoutingDataSource {
     String front = pingService.getFront();
     String back = pingService.getBack();
 
-    private final Logger log = LoggerFactory.getLogger(getClass());
     @Override
     protected Object determineCurrentLookupKey() {
-        log.info("happys {}",front);
-        log.info("kkkkkk {}",back);
 
         return (TransactionSynchronizationManager.isCurrentTransactionReadOnly()) ? "slave" : "master";
     }
