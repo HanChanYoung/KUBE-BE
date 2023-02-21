@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@RedisHash(value="boardGetAll",timeToLive = 60)
+@RedisHash(value="boardGetAll")
 public class BoardDtoGetAll implements Serializable {
 
     private static final long serialVersionUID = -214490344996507077L;

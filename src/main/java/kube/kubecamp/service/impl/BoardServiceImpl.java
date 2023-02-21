@@ -99,29 +99,7 @@ public class BoardServiceImpl implements BoardService {
             }
         }
 
-//        Optional<BoardDtoGet> foundResponseDto = redisBoardGetRepository.findById(boardId);
-//        if (foundResponseDto.isPresent()) {
-//            log.info("Cache Data is exist");
-//            log.info("[getBoard] Response ::  Response Time = {}ms", (System.currentTimeMillis() - startTime));
-//            log.info("\n\n\n\n\n\n\n\n\n\n\n\n\n {}",foundResponseDto);
-//
-//
-//
-//            return foundResponseDto.get();
-//        }
-//        else{
-//            log.info("Cache Data does NOT exist");
-//            log.info("Cache Data Saving...\n...\n...\n...");
-//
-//            BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
-//                    boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
-//                    boardEntity.getImgSrc(),localDateList2);
-//
-//            log.info("\n\n\n\n\n\n\n\n\n\n\n\n\n {}",boardDtoGet.getReservedDate());
-//            redisBoardGetRepository.save(boardDtoGet);
-//
-//
-//        }
+
         BoardDtoGet boardDtoGet = new BoardDtoGet(boardEntity.getBoardId(),boardEntity.getCategoryName(),boardEntity.getRentStartDate(),
                 boardEntity.getRentEndDate(),boardEntity.getBoardName(),boardEntity.getBoardDesc(),boardEntity.getPrice(),
                 boardEntity.getImgSrc(),localDateList2);
