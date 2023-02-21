@@ -14,7 +14,7 @@ public class RoutingDataSource extends AbstractRoutingDataSource {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     @Override
-    protected Object determineCurrentLookupKey() {
+    public Object determineCurrentLookupKey() {
         log.info("happys {}",front);
         log.info("kkkkkk {}",back);
 

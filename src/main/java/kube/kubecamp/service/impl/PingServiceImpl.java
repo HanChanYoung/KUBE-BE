@@ -1,4 +1,5 @@
 package kube.kubecamp.service.impl;
+import kube.kubecamp.data.db.RoutingDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,6 +87,8 @@ public class PingServiceImpl {
 
                 }
 
+                RoutingDataSource routingDataSource = new RoutingDataSource();
+                routingDataSource.determineCurrentLookupKey();
                 System.out.println(option);
 
 
